@@ -60,7 +60,7 @@ class SnmpSession(object):
 
         if self.snmpClient.vendor != None:
             # switch the worker by vendor if support, or use default one. 
-            print('<< vendor: ' + self.snmpClient.vendor)
+            #print('<< vendor: ' + self.snmpClient.vendor)
             if self.snmpClient.vendor == 'cisco':
                 self.snmpClient = SnmpCiscoClient(self.snmpClient)
             return True

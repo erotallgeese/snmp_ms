@@ -14,7 +14,7 @@ class SnmpHrStorageData():
     hrStorageUsed = None
 
     def __str__(self):
-        return 'type="storage", index="{}", descr="{}", size={}, used={}'.format(self.index, self.hrStorageDescr, self.hrStorageSize, self.hrStorageUsed)
+        return 'type="storage" index="{}" descr="{}" size={} used={}'.format(self.index, self.hrStorageDescr, self.hrStorageSize, self.hrStorageUsed)
 
 class SnmpInterfaceData():
     index = None
@@ -24,7 +24,7 @@ class SnmpInterfaceData():
     ifOutOctets = None
 
     def __str__(self):
-        return 'type="interface", index="{}", descr="{}", speed={}, in={}, out={}'.format(self.index, self.ifDescr, self.ifSpeed, self.ifInOctets, self.ifOutOctets)
+        return 'type="interface" index="{}" descr="{}" speed={} in={} out={}'.format(self.index, self.ifDescr, self.ifSpeed, self.ifInOctets, self.ifOutOctets)
 
 class SnmpProcessLoadData():
     index = None
@@ -32,7 +32,7 @@ class SnmpProcessLoadData():
     hrProcessorLoad = None
 
     def __str__(self):
-        return 'type="process", index="{}", descr="{}", load={}'.format(self.index, self.hrDeviceDescr, self.hrProcessorLoad)
+        return 'type="process" index="{}" descr="{}" load={}'.format(self.index, self.hrDeviceDescr, self.hrProcessorLoad)
 
 # Base worker class to get data through snmp. Other vendor should inherit this class and overwrite their functions.
 class SnmpBaseClient(object):

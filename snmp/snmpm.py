@@ -13,7 +13,7 @@ class SnmpManager(object):
     TAG = 'SnmpManager'
     
     # suppose there would start an thread to polling for data
-    def __init__(self, enablePool=True, callback=None):
+    def __init__(self, enablePool=True, callback=None, pollingInterval=240):
         self.enablePool = enablePool    # enable threadpool or not
         self.poolSize = 10              # threadpool size
         self.callback = callback        # callback function after getting data. this function's definition should be def func(data), where data is an 2d list.
@@ -21,8 +21,7 @@ class SnmpManager(object):
         self.p_add = None               # thread pointer for polling once, used at addList
         self.lock = threading.Lock()    # used to protect sessionList
         self.sessionList = []           # the snmp agent list (list of SnmpSession)
-        #self.polling_interval = 240    # polling interval
-        self.polling_interval = 3       # test
+        self.polling_interval = pollingInterval    # polling interval
         
     #def __del__(self):
     #    pass
@@ -164,5 +163,7 @@ class SnmpManager(object):
 
     # stop polling
     def stop(self):
-        self.p_stop = True
-        self.p.join()
+        if self.p:
+            self.p_stop = True
+            self.p.join()
+            self.p = None

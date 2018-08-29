@@ -14,16 +14,16 @@ class SnmpResp():
         if self.target != None:
             if isinstance(self.data, list) and len(self.data) > 0:
                 ret = []
-                prefix = 'logtime="{}", host="{}", port="{}"'.format(self.time, self.target.hostname, self.target.remote_port)
+                prefix = 'logtime="{}" host="{}" port="{}"'.format(self.time, self.target.hostname, self.target.remote_port)
                 if self.target.community:
-                    prefix += ', community="{}"'.format(self.target.community)
+                    prefix += ' community="{}"'.format(self.target.community)
                 if self.target.security_username:
-                    prefix += ', security_username="{}"'.format(self.target.security_username)
+                    prefix += ' security_username="{}"'.format(self.target.security_username)
                 if self.target.context:
-                    prefix += ', context="{}"'.format(self.target.context)
+                    prefix += ' context="{}"'.format(self.target.context)
                 
                 for d in self.data:
-                    ret.append('{}, {}'.format(prefix, str(d)))
+                    ret.append('{} {}'.format(prefix, str(d)))
 
                 return ret
 
